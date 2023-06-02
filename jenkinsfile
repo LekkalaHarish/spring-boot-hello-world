@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("code build"){
             steps{
-                echo "https://github.com/LekkalaHarish/spring-boot-hello-world.git"
+                git clone "https://github.com/LekkalaHarish/spring-boot-hello-world.git"
             }
         }
         
