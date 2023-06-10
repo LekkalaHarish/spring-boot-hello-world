@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage ("code build")
+        steps{
+            sh """
+            mvn install
+            ls -lart
+            mv target/ spring-boot-2-hello-world-1.0.2-SNAPSHOT.jar
+            ls -lart
+
+            """
+
+        }
+
+    }
+}
