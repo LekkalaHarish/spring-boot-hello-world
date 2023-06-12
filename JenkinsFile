@@ -2,21 +2,14 @@ pipeline
 {
     agent any
 
-   
-
-    stages
+stages{
+    stage("Build code")
     {
-        stage("build code")
-        {
-            steps
-            {
-             sh """
-                mvn install
-                ls -lrt
-                cd target/
-                ls -lrt
-                """
-            } 
-        }    
+        steps{
+            sh "mvn install"
+            sh " ls -lrt target/"
+
+        }
     }
+}
 }
