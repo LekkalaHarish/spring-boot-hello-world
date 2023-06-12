@@ -11,5 +11,15 @@ stages{
 
         }
     }
+
+    stage("code analysis")
+    {
+        steps{
+            withSonarQubeEnv('sonarqube-server') {
+                    sh "sonar:sonar"       
+             }
+        }
+        
+    }
 }
 }
