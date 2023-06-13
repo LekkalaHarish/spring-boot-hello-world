@@ -1,10 +1,10 @@
 pipeline
 {
     agent any
-    // environment 
-    // {
-    //     def scannerHome = tool 'sonar4.8'
-    // }   
+    environment 
+    {
+        def scannerHome = tool 'sonar'
+    }   
     stages
     {
         stage("Build code")
