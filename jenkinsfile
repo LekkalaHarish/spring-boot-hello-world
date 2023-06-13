@@ -23,27 +23,24 @@ pipeline
         }
          stage("code analysis")
         {
-        steps{
-
-            withSonarQubeEnv('sonar-env')
-              {
-                sh """
-                property("sonar.projectKey", "project-sonar")
-                property("sonar.organization", "myOrganization")
-                property("sonar.host.url", "http://192.168.29.10:9000/")
-
-                """
-              }
+            steps 
+            {
+                withSonarQubeEnv('sonar-env')
+                 {
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=project-sonar -Dsonar.projectName=project-sonar -Dsonar.sources=. -Dsonar.java.binaries=target/classes -Dsonar.sourceEncoding=UTF-8"
+                 }
             }
         
         }
-        stage("Quality Gate") {
+        stage("Quality Gate")
+         {
             steps 
             {
-              timeout(time: 5, unit: 'MINUTES') {
+              timeout(time: 5, unit: 'MINUTES') 
+              {
                 waitForQualityGate abortPipeline: true
               }
             }
-          }
+         }
     }
 }
