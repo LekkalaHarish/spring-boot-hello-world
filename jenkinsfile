@@ -13,5 +13,13 @@ pipeline
                 """
             }
         }
+
+        stage(run unit test)
+        {
+            steps
+            {
+                sh"mvn test"
+            }
+        }
     }
 }
