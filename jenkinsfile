@@ -27,7 +27,12 @@ pipeline
 
             withSonarQubeEnv('sonar-env')
               {
-                sh 'mvn clean package sonar:sonar'
+                sh """
+                property("sonar.projectKey", "project-sonar")
+                property("sonar.organization", "myOrganization")
+                property("sonar.host.url", "http://192.168.29.10:9000/")
+
+                """
               }
             }
         
