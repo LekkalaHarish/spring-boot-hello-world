@@ -29,9 +29,9 @@ pipeline
         {
             steps 
             {
-                withSonarQubeEnv('sonarqube-server')
+                withSonarQubeEnv('My SonarQube Server')
                  {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=project-sonar -Dsonar.projectName=project-sonar -Dsonar.sources=. -Dsonar.java.binaries=target/classes -Dsonar.sourceEncoding=UTF-8"
+                    sh 'mvn clean package sonar:sonar'
                  }
             }
         
